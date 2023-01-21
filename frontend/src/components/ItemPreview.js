@@ -48,14 +48,15 @@ const ItemPreview = (props) => {
           <p className="card-text crop-text-3">{item.description}</p>
         </Link>
         <div className="d-flex flex-row align-items-center pt-2 item-footer">
-          <Link to={`/@${item.seller.username}`}>
+          <Link to={`/@${item.seller.username}`} className={ !item.seller.isVerified ? "flex-grow-1" : ""}>
             <img
               src={item.seller.image}
               alt={item.seller.username}
               className="user-pic rounded-circle pr-1"
             />
           </Link>
-          <TopSeller isVerified={true} />
+          <TopSeller isVerified={item.seller.isVerified
+          } />
           <button className="btn btn-outline-secondary" onClick={handleClick}>
             <i className="ion-heart"></i> {item.favoritesCount}
           </button>
