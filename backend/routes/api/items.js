@@ -88,7 +88,7 @@ router.get("/", auth.optional, function(req, res, next) {
             items.map(async function(item) {
               item.seller = await User.findById(item.seller);
               return item.toJSONFor(user);
-            })
+            }),
           ),
           itemsCount: itemsCount
         });
