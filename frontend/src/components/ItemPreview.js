@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import agent from "../agent";
 import { connect } from "react-redux";
+import TopSeller from './Item/TopSeller';
 import { ITEM_FAVORITED, ITEM_UNFAVORITED } from "../constants/actionTypes";
 
 const mapDispatchToProps = (dispatch) => ({
@@ -47,13 +48,14 @@ const ItemPreview = (props) => {
           <p className="card-text crop-text-3">{item.description}</p>
         </Link>
         <div className="d-flex flex-row align-items-center pt-2 item-footer">
-          <Link to={`/@${item.seller.username}`} className="flex-grow-1">
+          <Link to={`/@${item.seller.username}`}>
             <img
               src={item.seller.image}
               alt={item.seller.username}
               className="user-pic rounded-circle pr-1"
             />
           </Link>
+          <TopSeller isVerified={true} />
           <button className="btn btn-outline-secondary" onClick={handleClick}>
             <i className="ion-heart"></i> {item.favoritesCount}
           </button>
